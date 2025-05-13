@@ -9,7 +9,7 @@ packer {
 
 
 source "amazon-ebs" "amazon_linux" {
-  ami_name       = "amazon_linux"
+  ami_name       = "my-custom-ami-{{timestamp}}"
   instance_type  = "t2.micro"
   region         = "ap-south-1"
   source_ami     = "ami-062f0cc54dbfd8ef1"
@@ -30,9 +30,14 @@ build {
     inline = [
        "sudo yum update -y",
       "sudo yum install -y nginx",
-      "sudo systemctl enable nginx"
+      "sudo systemctl enable nginx",
+      "sudo systemctl start nginx"
     ]
   }
+
+  post-processor "manifest" {
+  output = "manifest.json"
+}
 
   # provisioner "powershell" {
   #   inline = [
