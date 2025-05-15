@@ -9,12 +9,12 @@ packer {
 
 
 source "amazon-ebs" "amazon_linux" {
-  ami_name       = "my-custom-ami-{{timestamp}}"
-  instance_type  = "t2.micro"
-  region         = "ap-south-1"
-  source_ami     = "ami-062f0cc54dbfd8ef1"
-  ssh_username     = "ec2-user"
-  ssh_timeout      = "10m"
+  ami_name      = "my-custom-ami-{{timestamp}}"
+  instance_type = "t2.micro"
+  region        = "ap-south-1"
+  source_ami    = "ami-062f0cc54dbfd8ef1"
+  ssh_username  = "ec2-user"
+  ssh_timeout   = "10m"
 
   #  launch_block_device_mappings {
   #   device_name = "/dev/sda1"
@@ -28,7 +28,7 @@ build {
   sources = ["source.amazon-ebs.amazon_linux"]
   provisioner "shell" {
     inline = [
-       "sudo yum update -y",
+      "sudo yum update -y",
       "sudo yum install -y nginx",
       "sudo systemctl enable nginx",
       "sudo systemctl start nginx"
@@ -36,8 +36,8 @@ build {
   }
 
   post-processor "manifest" {
-  output = "manifest.json"
-}
+    output = "manifest.json"
+  }
 
   # provisioner "powershell" {
   #   inline = [

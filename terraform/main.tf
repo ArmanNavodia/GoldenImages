@@ -1,13 +1,13 @@
 data "aws_ami" "latest_packer_ami" {
-    depends_on = [ null_resource.build_ami ]
+  depends_on  = [null_resource.build_ami]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["my-custom-ami-*"]  # match your AMI name pattern
+    values = ["my-custom-ami-*"] # match your AMI name pattern
   }
 
-  owners = ["self"]  # only your account's AMIs
+  owners = ["self"] # only your account's AMIs
 }
 
 resource "aws_instance" "nginx_server" {
