@@ -11,6 +11,7 @@ This project automates the creation of an Amazon Machine Image (AMI) with NGINX 
 ---
 
 ## 🧱 Project Structure
+```
 .
 ├── packer/
 │ └── nginx-ami.pkr.hcl # Packer template to build AMI
@@ -20,7 +21,7 @@ This project automates the creation of an Amazon Machine Image (AMI) with NGINX 
 │ └── outputs.tf # Output values
 ├── Jenkinsfile # Jenkins pipeline definition
 └── README.md
-
+```
 
 ---
 
